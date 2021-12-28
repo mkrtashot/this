@@ -88,3 +88,30 @@ Here is the [solution](4.car.js)
   Should return a string "Playing with x", x being the favorite toy.
 
 Here is the [solution](5.baby.js)
+
+---
+
+## Playlist
+
+- Add: Pushes the passed-through song to the songs array
+- Play: Plays current song based on array index
+- Stop: Holds place in array, but calls above stop song prototype function
+- Next: Sets the next song in the songs array, calling the above play prototype function
+- Song should take in two arguments, title and artist, which should both be added as properties when the Song constructor function is used.
+- Play: Sets the song as playing using isPlaying
+- Stop: Sets the song as not playing (isPlaying = false)
+
+```
+const playlist = new Playlist();
+const heyJude = new Song("Hey Jude", "The Beatles");
+const jaded = new Song("Jaded", "Aerosmith");
+playlist.add(heyJude);
+playlist.add(jaded);
+playlist.play(); // Hey Jude started to play
+playlist.next(); // Hey Jude stopped, Jaded started
+playlist.next(); // Jaded stopped, Hey Jude started
+playlist.stop(); // Hey Jude stopped
+playlist.play(); // Hey Jude started
+```
+
+Here is the [solution](6.playlist.js)
