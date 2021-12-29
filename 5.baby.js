@@ -1,29 +1,36 @@
 "use strict";
 
-function Baby(name, age, favoriteToy) {
+function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.favoriteToy = favoriteToy;
   this.stomach = [];
 }
 
-Baby.prototype.eat = function (food) {
+Person.prototype.eat = function (food) {
   if (this.stomach.length >= 9) {
     return `${this.name} is not hungry`;
   }
   this.stomach.push(food);
 };
 
-Baby.prototype.poop = function () {
+Person.prototype.poop = function () {
   this.stomach = [];
 };
 
-Baby.prototype.toString = function () {
+Person.prototype.toString = function () {
   return `${this.name}, ${this.age}`;
 };
+
+function Baby(name, age, favoriteToy) {
+  Baby.prototype.__proto__ = Object.create(Person.prototype);
+  this.favoriteToy = favoriteToy;
+  this.name = name;
+  this.age = age;
+}
 
 Baby.prototype.play = function () {
   return `Playing with ${this.favoriteToy}`;
 };
 
-const bby1 = new Baby("Larisa", 3, "Barbie");
+let bby1 = new Baby("Larisa", 3, "Barbie");
+console.log(bby1.toString());
