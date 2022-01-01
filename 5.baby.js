@@ -22,15 +22,13 @@ Person.prototype.toString = function () {
 };
 
 function Baby(name, age, favoriteToy) {
-  Baby.prototype.__proto__ = Object.create(Person.prototype);
+  Person.call(this, name, age);
   this.favoriteToy = favoriteToy;
-  this.name = name;
-  this.age = age;
 }
+Baby.prototype.__proto__ = Person.prototype;
 
 Baby.prototype.play = function () {
   return `Playing with ${this.favoriteToy}`;
 };
 
 let bby1 = new Baby("Larisa", 3, "Barbie");
-console.log(bby1.toString());
